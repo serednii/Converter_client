@@ -12,7 +12,7 @@ const progressUnloading = document.querySelector('.progress__container.unloading
 const progressTitle = document.querySelector('.progress__title');
 const imageInput = document.getElementById('imageInput');
 const resultImagesDiv = document.getElementById('resultImages');
-
+const headerTopUser = document.querySelector('.header__top-user');
 const urlMainServer = 'http://localhost:8000';
 // const urlMainServer = 'https://sharpiramainserver-production.up.railway.app'
 // const urlMainServer = 'https://renewed-peace-production.up.railway.app'
@@ -21,8 +21,19 @@ let idQuery = 0;
 let downloadStatus = "";
 let percentDownloading = "";
 
+
 import './language.js';
 import './select_action.js';
+
+
+const userJson  = sessionStorage.getItem('user')
+const user = JSON.parse(userJson)
+
+if(user.role && user.name && user.email){
+    headerTopUser.style.display = 'none';
+}else{
+    headerTopUser.style.display = 'block';
+}
 
 
 //завантажуємо файли по посиланню яке генерується автоматично коли завантажаться дані

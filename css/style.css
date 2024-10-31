@@ -17,11 +17,24 @@ body {
 }
 
 .header {
+    
+    margin-bottom: 10px;
+}
+
+.header__top,
+.header__bottom {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 10px;
+}
+
+.header__top a{
+   transition: color 0.3s ease-in-out;
+}
+
+.header__top a:hover{
+    color: blueviolet;
 }
 
 .main-process {
