@@ -1,22 +1,20 @@
-
 const cancelButton = document.getElementById('cancelButton');
 const downloadArchive = document.getElementById('download-archive');
 const serverStopped = document.getElementById('server_stopped');
 const pingServers = document.getElementById('ping_servers');
-const submit = document.getElementById('submit');
-const progressStatus = document.querySelector('.progress__status');
-const progressDownload = document.querySelector('.progress__container.download');
-const progressProcessing = document.querySelector('.progress__container.processing');
-const progressUnloading = document.querySelector('.progress__container.unloading');
+const submit = document.getElementById('submit')
+const progressStatus = document.querySelector('.progress__status')
+const progressDownload = document.querySelector('.progress__container.download')
+const progressProcessing = document.querySelector('.progress__container.processing')
+const progressUnloading = document.querySelector('.progress__container.unloading')
 const progressTitle = document.querySelector('.progress__title');
 const imageInput = document.getElementById('imageInput');
 const resultImagesDiv = document.getElementById('resultImages');
-
-const buttonExit = document.querySelector('.user__exit');
-// import checkAuthorization from './authAdmin';
-
-// import { store } from './store';
-// let user = store.user;
+const headerTopUserNoAuthorization = document.querySelector('.header__top-user__noauthorization');
+const headerTopUserAuthorization = document.querySelector('.header__top-user__authorization')
+const buttonExit = document.querySelector('.user__exit')
+const linkAdmin = document.querySelector('.header__top-admin .admin')
+const linkUser = document.querySelector('.header__top-admin .user')
 
 const urlMainServer = 'http://localhost:8000';
 // const urlMainServer = 'https://sharpiramainserver-production.up.railway.app'
@@ -29,7 +27,146 @@ let downloadStatus = "";
 let percentDownloading = "";
 let user = null;
 
-import './language.js';
+// Мовні ресурси
+const languageTexts = {
+    uk: {
+        title: "Завантажте зображення",
+        processTypeLabel: "Виберіть тип обробки:",
+        brightness: "Яскравість",
+        blur: "Розмиття",
+        resize: "Змінити розмір",
+        grayscale: "Чорно-біле",
+        rotate: "Повернути на 90°",
+        contrast: "Контраст",
+        crop: "Обрізати",
+        upload: "Завантажити",
+        cancel: "Скасувати обробку",
+        progress: "Прогрес",
+        download: "Завантажити архів",
+        resultTitle: "Результат:",
+        chooseLanguage: "Виберіть мову",  // Додано
+    },
+    en: {
+        title: "Upload Images",
+        processTypeLabel: "Choose process type:",
+        brightness: "Brightness",
+        blur: "Blur",
+        resize: "Resize",
+        grayscale: "Grayscale",
+        rotate: "Rotate 90°",
+        contrast: "Contrast",
+        crop: "Crop",
+        upload: "Upload",
+        cancel: "Cancel Processing",
+        progress: "Progress",
+        download: "Download Archive",
+        resultTitle: "Result:",
+        chooseLanguage: "Choose language",  // Додано
+    },
+    cz: {
+        title: "Nahrát obrázky",
+        processTypeLabel: "Vyberte typ zpracování:",
+        brightness: "Jas",
+        blur: "Rozmazání",
+        resize: "Změnit velikost",
+        grayscale: "Černobílý",
+        rotate: "Otočit o 90°",
+        contrast: "Kontrast",
+        crop: "Oříznout",
+        upload: "Nahrát",
+        cancel: "Zrušit zpracování",
+        progress: "Průběh",
+        download: "Stáhnout archiv",
+        resultTitle: "Výsledek:",
+        chooseLanguage: "Vyberte jazyk",  // Додано
+    },
+};
+
+// Функція для зміни мови
+function changeLanguage(lang) {
+    document.querySelector("h1").textContent = languageTexts[lang].title;
+    document.querySelector(
+        'label[for="processType"]'
+    ).textContent = languageTexts[lang].processTypeLabel;
+    document.querySelector(
+        '#processType option[value="brightness"]'
+    ).textContent = languageTexts[lang].brightness;
+    document.querySelector('#processType option[value="blur"]').textContent =
+        languageTexts[lang].blur;
+    document.querySelector(
+        '#processType option[value="resize"]'
+    ).textContent = languageTexts[lang].resize;
+    document.querySelector(
+        '#processType option[value="grayscale"]'
+    ).textContent = languageTexts[lang].grayscale;
+    document.querySelector(
+        '#processType option[value="rotate"]'
+    ).textContent = languageTexts[lang].rotate;
+    document.querySelector(
+        '#processType option[value="contrast"]'
+    ).textContent = languageTexts[lang].contrast;
+    document.querySelector('#processType option[value="crop"]').textContent =
+        languageTexts[lang].crop;
+    document.querySelector("button[type='submit']").textContent =
+        languageTexts[lang].upload;
+    document.querySelector("#cancelButton").textContent =
+        languageTexts[lang].cancel;
+    // document.querySelector(".w3-blue")?.textContent =
+    //     languageTexts[lang].progress;
+    document.querySelector("#download-archive").textContent =
+        languageTexts[lang].download;
+    document.querySelector(".title-result").textContent =
+        languageTexts[lang].resultTitle;
+    document.querySelector('label[for="languageSelect"]').textContent =
+        languageTexts[lang].chooseLanguage; // Додано
+}
+
+// Додаємо подію для зміни мови
+document.getElementById("languageSelect").addEventListener("change", function () {
+    changeLanguage(this.value);
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const processType = document.getElementById('processType');
+    const optionsDivs = document.querySelectorAll('.options');
+
+    const showOptions = (type) => {
+        optionsDivs.forEach((div) => div.style.display = 'none');
+
+        switch (type) {
+            case 'resize':
+                document.getElementById('resizeOptions').style.display = 'block';
+                break;
+            case 'rotate':
+                document.getElementById('rotateOptions').style.display = 'block';
+                break;
+            case 'blur':
+                document.getElementById('blurOptions').style.display = 'block';
+                break;
+            case 'brightness':
+                document.getElementById('brightnessOptions').style.display = 'block';
+                break;
+            case 'contrast':
+                document.getElementById('contrastOptions').style.display = 'block';
+                break;
+            case 'crop':
+                document.getElementById('cropOptions').style.display = 'block';
+                break;
+        }
+    };
+
+    processType.addEventListener('change', (e) => {
+        showOptions(e.target.value);
+    });
+
+    showOptions(processType.value);
+});
+
+
+
+
 import './select_action.js';
 
 //***************************ADMIN********************** */
@@ -44,23 +181,17 @@ buttonExit.addEventListener('click', () => {
 function checkAuthorization() {
     const userJson = sessionStorage.getItem('user')
     user = JSON.parse(userJson)
-
-    const userAuthElem = document.querySelector('.header__top-user__authorization')
-    const userNoAuthElem = document.querySelector('.header__top-user__noauthorization');
-    const adminLink = document.querySelector('.header__top-admin .admin')
-    const userLink = document.querySelector('.header__top-admin .user')
-
-    userNoAuthElem.style.display = 'block';
-    userAuthElem.style.display = "none";
-    adminLink.style.display = 'none';
-    userLink.style.display = 'none';
+    headerTopUserNoAuthorization.style.display = 'block';
+    headerTopUserAuthorization.style.display = "none";
+    linkAdmin.style.display = 'none';
+    linkUser.style.display = 'none';
 
     if (user && user.role && user.name && user.email) {
-        user.role === "admin" && (adminLink.style.display = 'block');
-        user.role === "user" && (userLink.style.display = 'block');
-        userNoAuthElem.style.display = 'none';
-        userAuthElem.style.display = 'block';
-        userAuthElem.children[0].innerText = "Привіт " + user?.name
+        user.role === "admin" && (linkAdmin.style.display = 'block');
+        user.role === "user" && (linkUser.style.display = 'block');
+        headerTopUserNoAuthorization.style.display = 'none';
+        headerTopUserAuthorization.style.display = 'block';
+        headerTopUserAuthorization.children[0].innerText = "Привіт " + user?.name
     }
 }
 

@@ -1,7 +1,5 @@
-const user = {
-    name:'', 
-    email:'',
-    registration:false
+let store = {
+    user: null,
 }
 
-export {user}
+export default store 

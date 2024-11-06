@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: rgb(113, 144, 197) !important;
     min-width: 320px;
 }
@@ -17,33 +17,11 @@ body {
 }
 
 .header {
-
-    margin-bottom: 10px;
-}
-
-.header__top,
-.header__bottom {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
-}
-
-.header__top-admin {
-    width: 200px;
-}
-
-.header__top-admin .admin {
-    display: none;
-}
-
-.header__top a {
-    transition: color 0.3s ease-in-out;
-
-}
-
-.header__top a:hover {
-    color: blueviolet;
+    margin-bottom: 10px;
 }
 
 .main-process {
@@ -73,10 +51,10 @@ body {
     max-width: 400px;
     width: 100%;
     /* height: 150px; */
-    border-radius: 10px;
-}
+/* border-radius: 10px;
+} */
 
-.progress__title {
+/* .progress__title {
     color: white;
     font-size: 3rem;
     text-align: center;
@@ -87,14 +65,14 @@ body {
     text-align: center;
     height: 40px;
     margin-bottom: 10px;
-}
+} */
 
 /* .progress div {
     position: absolute;
     height: 58px;
 } */
 
-.progress__container {
+/* .progress__container {
     position: relative;
     margin-bottom: 10px;
     display: none;
@@ -123,7 +101,7 @@ body {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-}
+} */
 
 /* 
 .processing-progress {
@@ -133,7 +111,7 @@ body {
 
 
 
-h1 {
+/* h1 {
     text-align: center;
     margin: 0;
     color: #fff !important;
@@ -157,7 +135,6 @@ h1 {
     font-size: 2.5rem;
     color: white;
 }
-
 
 
 .title-result {
@@ -235,14 +212,14 @@ button {
 
 button:hover {
     background-color: #357ABD;
-}
+} */
 
-.options {
+/* Сховати параметри за замовчуванням */
+/* .options {
     display: none;
-    /* Сховати параметри за замовчуванням */
-}
+} */
 
-.options label {
+/* .options label {
     margin-top: 10px;
     font-weight: bold;
 }
@@ -259,10 +236,9 @@ h2 {
 
 #resultImages li {
     margin: 10px 0;
-}
+} */
 
-/* 
-#resultImages img {
+/* #resultImages img {
     max-width: 100%;
     border: 2px solid #4A90E2;
     border-radius: 5px;
@@ -272,3 +248,4 @@ h2 {
 #resultImages img:hover {
     scale: 2;
 } */
+*/

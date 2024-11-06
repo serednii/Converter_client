@@ -15,11 +15,17 @@
     <header class="header">
       <div class="header__top">
         <div class="header__top-admin">
-          <a href="./admin//admin.html" class="admin link-opacity-100">Admin Pannel</a>
+          <a href="./panel/adminPanel/admin.html" class="admin link-opacity-100">Admin Pannel</a>
+          <a href="./panel/userPanel/user.html" class="user link-opacity-100">User Pannel</a>
         </div>
-        <div class="header__top-user">
+
+        <div class="header__top-user__noauthorization">
           <a href="./auth/login.html" class="login link-opacity-100">Login</a>
           <a href="./auth/register.html" class="registration link-opacity-100">Registration</a>
+        </div>
+        <div class="header__top-user__authorization">
+          <p class="user__name"></p>
+          <button href="./auth/register.html" class="user__exit">Вихід</button>
         </div>
         <div class="language-switcher">
           <label for="languageSelect">Виберіть мову:</label>
@@ -119,11 +125,11 @@
             <div class="progress__percent" ></div>
             <p class="progress__percent_number">0%</p>
           </div>
-
-
-
           <a id="download-archive" download>Завантажити архів</a>
         </div>
+
+
+        
       </section>
       <h2 class="title-result">Результат:</h2>
       <ul id="resultImages"></ul>

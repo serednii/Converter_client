@@ -6,24 +6,24 @@
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const login = document.getElementById('loginLogin').value;
+    const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
     try {
 
-        const response = await fetch('http://localhost:8000/login', {
+        const response = await fetch('http://localhost:8000/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ login, password })
+            body: JSON.stringify({ email, password })
         });
 
         const user = await response.json();
         if (response.ok) {
             console.log(user)
-            // sessionStorage.setItem("user", JSON.stringify(user))
-            // window.location.href = '/';
+            sessionStorage.setItem("user", JSON.stringify({ ...user, email }))
+            window.location.href = '/';
         } else {
             alert(`Помилка: ${data.message}`);
         }

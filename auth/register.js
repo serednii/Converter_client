@@ -8,12 +8,12 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const email = document.getElementById('registerEmail').value;
 
     try {
-        const response = await fetch('http://localhost:8000/register', {
+        const response = await fetch('http://localhost:8000/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email, password, name,  })
+            body: JSON.stringify({ email, password, name })
         });
 
         const data = await response.json();
@@ -21,10 +21,10 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
             console.log(data)
 
             const user = {
-               email,
-               password,
-               name,
-               role: "user" 
+                email,
+                password,
+                name,
+                role: "user"
             }
             sessionStorage.setItem("user", JSON.stringify(user))
             window.location.href = '/';
