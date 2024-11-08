@@ -1,0 +1,35 @@
+body {
+    min-width: 320px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 15px 0;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group .form-control {
+    width: 250px;
+}
+
+.input-group-append {
+    display: inline-block;
+}
+
+.change__data-sever .input-group-append {
+    text-align: center;
+    display: block;
+}
+
+.description__settings {
+    word-wrap: break-word;
+    white-space: normal !important;
+}
+
+.change__data-sever .form-control {
+    margin-bottom: 5px;
+}

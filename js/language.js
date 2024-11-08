@@ -1,5 +1,5 @@
 // Мовні ресурси
-const languageTexts = {
+export const languageTexts = {
     uk: {
         title: "Завантажте зображення",
         processTypeLabel: "Виберіть тип обробки:",
