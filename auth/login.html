@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrace a Přihlášení</title>
+    <link href="./auth.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="header__top-user__noauthorization">
+      <a href="/" class="main-page link-opacity-100">Hlavní stránka</a>
+      <a href="./register.html" class="registration link-opacity-100"
+        >Registrace</a
+      >
+    </div>
+    <h1>Přihlášení</h1>
+    <form id="loginForm">
+      <label for="loginEmail">Uživatelské jméno:</label>
+      <input type="email" value="serednii@gmail.com" id="loginEmail" required />
+      <br />
+      <label for="loginPassword">Heslo:</label>
+      <input type="password" value="12345" id="loginPassword" required />
+      <br />
+      <button type="submit">Přihlásit se</button>
+    </form>
+
+    <script type="module" src="./login.js"></script>
+  </body>
+</html>

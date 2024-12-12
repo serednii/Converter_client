@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nahrát více obrázků</title>
+  <link href="./css/reset.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link href="./css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header__top">
+        <div class="header__top-admin">
+          <a href="./panel/adminPanel/admin.html" class="admin link-opacity-100">Admin Panel</a>
+          <a href="./panel/userPanel/user.html" class="user link-opacity-100">Uživatelský panel</a>
+        </div>
+
+        <div class="header__top-user__noauthorization">
+          <a href="./auth/login.html" class="login link-opacity-100">Přihlášení</a>
+          <a href="./auth/register.html" class="registration link-opacity-100">Registrace</a>
+        </div>
+        <div class="header__top-user__authorization">
+          <p class="user__name"></p>
+          <button href="./auth/register.html" class="user__exit">Odhlásit se</button>
+        </div>
+
+      </div>
+      <div class="header__bottom">
+        <h1>Nahrát obrázky</h1>
+        <h3>Maximální velikost 50 MB</h3>
+      </div>
+    </header>
+
+    <main>
+      <section class="main-process">
+        <div class="form__wrapper">
+          <form id="uploadForm">
+            <input type="file" id="imageInput" name="images" accept="image/*" multiple required />
+            <p id="error-message" style="color: red;"></p>
+
+            <!-- Výběr typu zpracování obrázku -->
+            <label for="processType">Vyberte typ zpracování:</label>
+            <select id="processType" name="processType">
+              <option value="grayscale">Šedotónový</option>
+              <option value="brightness">Jas</option>
+              <option value="blur">Rozostření</option>
+              <option value="resize">Změnit velikost</option>
+              <option value="rotate">Otočit o 90°</option>
+              <option value="contrast">Kontrast</option>
+              <option value="crop">Oříznout</option>
+            </select>
+
+            <!-- Parametry pro zpracování obrázků -->
+            <div id="resizeOptions" class="options">
+              <label for="resizeWidth">Šířka (px):</label>
+              <input type="number" id="resizeWidth" name="resizeWidth" />
+              <label for="resizeHeight">Výška (px):</label>
+              <input type="number" id="resizeHeight" name="resizeHeight" />
+            </div>
+
+            <div id="rotateOptions" class="options">
+              <label for="rotateDegrees">Stupně otočení:</label>
+              <input type="number" id="rotateDegrees" name="rotateDegrees" value="90" />
+            </div>
+
+            <div id="blurOptions" class="options">
+              <label for="blurLevel">Úroveň rozostření:</label>
+              <input type="number" id="blurLevel" name="blurLevel" value="5" />
+            </div>
+
+            <div id="brightnessOptions" class="options">
+              <label for="brightnessLevel">Úroveň jasu (0-2):</label>
+              <input type="number" id="brightnessLevel" name="brightnessLevel" value="1" step="0.1" min="0" max="2" />
+            </div>
+
+            <div id="contrastOptions" class="options">
+              <label for="contrastLevel">Úroveň kontrastu (0-2):</label>
+              <input type="number" id="contrastLevel" name="contrastLevel" value="1" step="0.1" min="0" max="2" />
+            </div>
+
+            <div id="cropOptions" class="options">
+              <label for="cropWidth">Šířka oříznutí (px):</label>
+              <input type="number" id="cropWidth" name="cropWidth" />
+              <label for="cropHeight">Výška oříznutí (px):</label>
+              <input type="number" id="cropHeight" name="cropHeight" />
+            </div>
+
+            <button id="submit" type="submit">Nahrát</button>
+          </form>
+          <button id="cancelButton">Zrušit zpracování</button>
+        </div>
+
+        <div class="progress__wrapper">
+          <h2 class="progress__title">Progres</h2>
+          <p class="progress__status">Začneme</p>
+
+          <div class="progress__container unloading">
+            <div class="progress__fon"></div>
+            <div class="progress__percent"></div>
+            <p class="progress__percent_number">0%</p>
+          </div>
+          
+          <div class="progress__container processing">
+            <div class="progress__fon"></div>
+            <div class="progress__percent"></div>
+            <p class="progress__percent_number">0%</p>
+          </div>
+
+          <div class="progress__container download">
+            <div class="progress__fon"></div>
+            <div class="progress__percent"></div>
+            <p class="progress__percent_number">0%</p>
+          </div>
+          <a id="download-archive" download>Stáhnout archiv</a>
+        </div>
+
+      </section>
+      <h2 class="title-result">Výsledek:</h2>
+      <ul id="resultImages"></ul>
+  </div>
+  </main>
+  <script type="module" src="./js/index.js"></script>
+</body>
+
+</html>
