@@ -1,33 +1,6 @@
 import { setProgress, clearProgress, displayResults } from './uiUtils.js';
-import { resultImagesDiv, urlMainServer, store, progressUnloading, progressDownload, progressProcessing } from './store.js';
-// export default async function initUploadProcess(formData) {
-//     const controller = new AbortController();
-//     const xhr = new XMLHttpRequest();
-//     xhr.open('POST', `${urlMainServer}/images/upload-multiple`, true);
+import { resultImagesDiv, urlMainServer, store, progressUnloading, progressDownload, progressProcessing, progressStatus } from './store.js';
 
-//     controller.signal.addEventListener('abort', () => {
-//         xhr.abort();
-//         console.log('Request aborted');
-//     });
-
-//     xhr.upload.addEventListener('progress', (event) => {
-//         setProgress('uploading', event);
-//     });
-
-//     xhr.addEventListener('load', () => {
-//         if (xhr.status === 200) {
-//             displayResults(JSON.parse(xhr.response));
-//         } else {
-//             console.error('Error uploading files');
-//         }
-//     });
-
-//     xhr.onerror = () => {
-//         console.error('Upload error');
-//         clearProgress();
-//     };
-//     xhr.send(formData);
-// }
 
 export default async function sendData(formData) {
     try {
@@ -51,18 +24,15 @@ export default async function sendData(formData) {
         xhr.upload.addEventListener('progress', (event) => {
             if (event.lengthComputable) {
                 store.percentDownloading = parseInt(((event.loaded / event.total) * 100));
-                setProgress(progressUnloading, store.downloadStatus, store.percentDownloading)
+                setProgress(progressUnloading, 'unloading', store.percentDownloading)
             }
         });
         // Відправка даних на сервер
 
         xhr.addEventListener('progress', (event) => {
             if (event.lengthComputable) {
-
                 store.percentDownloading = parseInt(((event.loaded / event.total) * 100));
-                setProgress(progressDownload, store.downloadStatus, store.percentDownloading)
-
-
+                setProgress(progressDownload, 'downloading', store.percentDownloading)
                 progressProcessing.children[1].style.width = '100%'
                 progressProcessing.children[2].innerText = '100 %'
             }
@@ -70,10 +40,10 @@ export default async function sendData(formData) {
 
         // Обробка помилок
         xhr.onerror = (error) => {
-            console.error('Помилка завантаження');
+            console.error('Помилка завантаження111', error);
             alert('Помилка завантаження');
             clearProgress();
-            clearInterval(idSetInterval);
+            clearInterval(store.idSetInterval);
             //Розблоковуємо кнопку відправки даних
             submit.disabled = false;
             progressStatus.innerText = "Помилка завантаження";
@@ -91,6 +61,14 @@ export default async function sendData(formData) {
                 console.log(data);
                 //Виводимо результат
                 displayResults(data);
+            } else if (xhr.status >= 400) {
+                console.log(xhr.responseText)
+                alert(xhr.responseText);
+                clearProgress();
+                clearInterval(store.idSetInterval);
+                //Розблоковуємо кнопку відправки даних
+                submit.disabled = false;
+                progressStatus.innerText = xhr.responseText;
             }
         };
 

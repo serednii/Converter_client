@@ -29,7 +29,6 @@ export default async function checkProcessingStatus(idQuery) {
 
             store.downloadStatus = result.processingStatus;
 
-
             if (store.downloadStatus === "processing images") {
                 setProgress(progressProcessing, store.downloadStatus, percent)
             }

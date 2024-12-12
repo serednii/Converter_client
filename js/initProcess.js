@@ -1,6 +1,6 @@
 
-import { urlMainServer, store } from "./store";
-import { clearProgress } from "./uiUtils";
+import { urlMainServer, store } from "./store.js";
+import { clearProgress } from "./uiUtils.js";
 
 const initProcess = async (idQuery, numberImage, sizeFiles) => {
     try {
@@ -18,10 +18,9 @@ const initProcess = async (idQuery, numberImage, sizeFiles) => {
 
         return await res.json();
 
-        // console.log('Дані ініційовано');
     } catch (error) {
         alert('Помилка на сервері спробуйте пізніше')
-        clearProgress();        //Розблоковуємо кнопку відправки даних
+        clearProgress(); //Розблоковуємо кнопку відправки даних
         submit.disabled = false;
         console.error('Помилка при ініціалізації запиту на сервері:', error);
     }

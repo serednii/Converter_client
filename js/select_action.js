@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     const processType = document.getElementById('processType');
-    const optionsDivs = document.querySelectorAll('.options');
+    const optionsDiv = document.querySelectorAll('.options');
 
     const showOptions = (type) => {
-        optionsDivs.forEach((div) => div.style.display = 'none');
+        optionsDiv.forEach((div) => div.style.display = 'none');
 
         switch (type) {
             case 'resize':

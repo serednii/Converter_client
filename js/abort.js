@@ -1,7 +1,7 @@
 
 const cancelButton = document.getElementById('cancelButton');
-import { store } from './store';
-import { clearProgress } from './uiUtils';
+import { store } from './store.js';
+import { clearProgress } from './uiUtils.js';
 
 cancelButton.addEventListener('click', () => {
     store.controller.abort(); // Скасовуємо запит
@@ -26,4 +26,3 @@ cancelButton.addEventListener('click', () => {
 
 });
 
-export default cancelButton;

@@ -1,13 +1,11 @@
 import { progressStatus, progressProcessing, progressUnloading, progressDownload, downloadArchive, resultImagesDiv } from './store.js'
 
-
 export function setProgress(elementProgress, downloadStatus, percent) {
     progressStatus.innerText = downloadStatus
     elementProgress.style.display = "block"
     elementProgress.children[1].style.width = `${percent}%`
     elementProgress.children[2].innerText = `${percent} %`
 }
-
 
 export function clearProgress() {
     progressStatus.innerText = "Let's start";
@@ -27,13 +25,6 @@ export function clearProgress() {
     progressDownload.children[2].innerText = '0%';
 }
 
-// export function initEventListeners() {
-//     document.getElementById('uploadForm').addEventListener('submit', handleUploadSubmit);
-//     document.getElementById('languageSelect').addEventListener('change', (e) => {
-//         updateLanguage(e.target.value);
-//     });
-// }
-
 export function displayResults(data) {
     progressStatus.innerText = "Done";
     downloadArchive.href = data?.downloadLink;
@@ -43,7 +34,7 @@ export function displayResults(data) {
         console.log(blobUrl)
         const li = document.createElement('li'); // Створюємо елемент списку
         const img = document.createElement('img'); // Створюємо елемент зображення
-        img.src = blobUrl.res[0].imageBase64;
+        img.src = blobUrl.response[0].imageBase64;
         img.alt = 'Оброблене зображення';
         img.style.maxWidth = '300px'; // Задаємо розмір для відображення
         li.appendChild(img); // Вставляємо зображення у список

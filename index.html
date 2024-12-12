@@ -27,14 +27,7 @@
           <p class="user__name"></p>
           <button href="./auth/register.html" class="user__exit">Вихід</button>
         </div>
-        <div class="language-switcher">
-          <label for="languageSelect">Виберіть мову:</label>
-          <select id="languageSelect">
-            <option value="uk">Українська</option>
-            <option value="en">English</option>
-            <option value="cz">Čeština</option>
-          </select>
-        </div>
+
       </div>
       <div class="header__bottom">
         <h1>Завантажте зображення</h1>
@@ -47,6 +40,7 @@
         <div class="form__wrapper">
           <form id="uploadForm">
             <input type="file" id="imageInput" name="images" accept="image/*" multiple required />
+            <p id="error-message" style="color: red;"></p>
 
             <!-- Вибір типу обробки зображення -->
             <label for="processType">Виберіть тип обробки:</label>

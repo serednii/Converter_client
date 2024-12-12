@@ -1,5 +1,14 @@
-import  {store}  from './store.js'
-// let user = store.user
+import { store } from './store.js'
+
+const buttonExit = document.querySelector('.user__exit');
+
+buttonExit.addEventListener('click', () => {
+    sessionStorage.clear('user');
+    checkAuthorization();
+})
+
+// перевірка авторизації
+checkAuthorization()
 
 function checkAuthorization() {
     console.log('checkAuthorization')
@@ -25,5 +34,3 @@ function checkAuthorization() {
         userAuthElem.children[0].innerText = "Привіт " + store.user?.name
     }
 }
-
-export default checkAuthorization;

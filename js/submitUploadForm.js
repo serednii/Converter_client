@@ -2,7 +2,7 @@
 import { store } from './store.js';
 import sendData from './sendData.js';
 import checkProcessingStatus from './checkProcessingStatus.js'
-import initProcess from './initProcess/js'
+import initProcess from './initProcess.js'
 
 document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     e.preventDefault();
