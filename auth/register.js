@@ -1,7 +1,7 @@
 // import {user} from '../js/store'
 
-import { urlMainServer } from "../js/store";
 
+const urlMainServer = 'https://converterserver-production.up.railway.app'
 // Обробка форми реєстрації
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
                 role: "user"
             }
             sessionStorage.setItem("user", JSON.stringify(user))
-            window.location.href = 'https://serednii.github.io/Converter_client/';
+            window.location.href = 'https://serednii.github.io/Converter_client';
 
         } else {
             alert(`Помилка: ${data.message}`);
