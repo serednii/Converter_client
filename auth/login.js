@@ -10,7 +10,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
-
+    console.log(email, password)
     try {
 
         const response = await fetch(`${urlMainServer}/user/login`, {
@@ -24,8 +24,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         const user = await response.json();
 
         if (response.ok) {
-            console.log(user)
-            sessionStorage.setItem("user", JSON.stringify({ ...user, email }))
+            console.log(user);
+            sessionStorage.setItem("user", JSON.stringify({ ...user, email }));
             // window.location.href = 'https://serednii.github.io/Converter_client';
             console.log(window.location.href)
         } else {
