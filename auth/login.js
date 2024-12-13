@@ -1,6 +1,8 @@
 // import {user} from '../js/store'
 // Обробка форми реєстрації
 
+import { urlMainServer } from "../js/store";
+
 
 // Обробка форми входу
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -11,7 +13,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     try {
 
-        const response = await fetch('http://localhost:8000/user/login', {
+        const response = await fetch(`${urlMainServer}/user/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -20,13 +22,15 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         });
 
         const user = await response.json();
+
         if (response.ok) {
             console.log(user)
             sessionStorage.setItem("user", JSON.stringify({ ...user, email }))
-            window.location.href = 'https://serednii.github.io/';
+            window.location.href = '/';
         } else {
             alert(`Помилка: ${data.message}`);
         }
+
     } catch (error) {
         alert('Не вдалося підключитися до сервера');
     }
