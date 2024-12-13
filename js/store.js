@@ -17,6 +17,7 @@ const progressUnloading = document.querySelector('.progress__container.unloading
 const progressTitle = document.querySelector('.progress__title');
 const imageInput = document.getElementById('imageInput');
 const resultImagesDiv = document.getElementById('resultImages');
+
 // const urlMainServer = 'http://localhost:8000';
 const urlMainServer = 'https://converterserver-production.up.railway.app'
 // const urlMainServer = 'https://renewed-peace-production.up.railway.app'

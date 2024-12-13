@@ -1,8 +1,8 @@
 // import {user} from '../js/store'
 // Обробка форми реєстрації
 
-import { urlMainServer } from "../js/store";
-
+// import { urlMainServer } from "../js/store";
+const urlMainServer = 'https://converterserver-production.up.railway.app'
 
 // Обробка форми входу
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
