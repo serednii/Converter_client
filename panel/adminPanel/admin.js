@@ -17,7 +17,7 @@ const btnNumbFileForServer = document.querySelector('.btn.numbFileForServer')
 const btnStartPort = document.querySelector('.btn.startPort')
 
 const dataUsers = document.querySelector('#data-users')
-
+const urlMainServer = 'https://converterserver-production.up.railway.app'
 btnMaxWorkServer.addEventListener('click', (e) => {
     e.preventDefault();
     const value = inputMaxWorkServer.value;
@@ -38,7 +38,7 @@ btnStartPort.addEventListener('click', (e) => {
 
 function setAdminData(data) {
     try {
-        fetch(`http://localhost:8000/admin/setAdminData`, {
+        fetch(`${urlMainServer}/admin/setAdminData`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -62,7 +62,7 @@ function setAdminData(data) {
 
 function getAdminData() {
     try {
-        fetch(`http://localhost:8000/admin/getAdminData`, {
+        fetch(`${urlMainServer}/admin/getAdminData`, {
             method: 'POST',
         })
             .then(res => {

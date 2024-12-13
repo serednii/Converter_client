@@ -1,11 +1,11 @@
 const dataUsers = document.querySelector('#data-users')
 const userJson = sessionStorage.getItem('user')
 const user = JSON.parse(userJson)
-console.log(user)
+const urlMainServer = 'https://converterserver-production.up.railway.app'
 
 function getAdminData() {
   try {
-    fetch(`http://localhost:8000/user/getUserData`, {
+    fetch(`${urlMainServer}/user/getUserData`, {
       method: 'POST',
       body: JSON.stringify({ email: user.email }),
       headers: {
