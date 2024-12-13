@@ -26,6 +26,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         if (response.ok) {
             console.log(user)
             sessionStorage.setItem("user", JSON.stringify({ ...user, email }))
+            console.log(window.location.href)
             window.location.href = 'https://serednii.github.io/Converter_client';
         } else {
             alert(`Помилка: ${data.message}`);
