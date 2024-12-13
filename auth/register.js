@@ -30,7 +30,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
                 role: "user"
             }
             sessionStorage.setItem("user", JSON.stringify(user))
-            window.location.href = '/';
+            window.location.href = 'https://serednii.github.io/Converter_client/';
 
         } else {
             alert(`Помилка: ${data.message}`);
