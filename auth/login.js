@@ -23,7 +23,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         if (response.ok) {
             console.log(user)
             sessionStorage.setItem("user", JSON.stringify({ ...user, email }))
-            window.location.href = '/';
+            window.location.href = 'https://serednii.github.io/';
         } else {
             alert(`Помилка: ${data.message}`);
         }
