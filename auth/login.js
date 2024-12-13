@@ -26,7 +26,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         if (response.ok) {
             console.log(user)
             sessionStorage.setItem("user", JSON.stringify({ ...user, email }))
-            window.location.href = '/';
+            window.location.href = './';
         } else {
             alert(`Помилка: ${data.message}`);
         }
